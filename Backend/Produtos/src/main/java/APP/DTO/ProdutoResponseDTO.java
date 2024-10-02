@@ -1,15 +1,17 @@
 package APP.DTO;
 
+import APP.Enum.UNIDADEMEDIDA;
+
 import java.time.LocalDateTime;
 
 public record ProdutoResponseDTO(
+
+        Long id,
         String nome,
-        String descricao,
         String codigo,
-        String codigoEstoque,
         Double quantidade,
-        String valor,
-        String notificacao,
-        LocalDateTime dataEntrada
+        UNIDADEMEDIDA unidademedida,
+        String valorPorcao,
+        LocalDateTime dataControle
 ) {
 }

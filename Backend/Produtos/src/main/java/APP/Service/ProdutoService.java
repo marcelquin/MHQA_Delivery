@@ -1,15 +1,16 @@
 package APP.Service;
 
-import APP.DTO.EstoqueDTO;
-import APP.DTO.EstoqueResponseDTO;
+import APP.DTO.IngredienteDTO;
 import APP.DTO.ProdutoDTO;
-import APP.Entity.EstoqueEntity;
+import APP.DTO.ProdutoResponseDTO;
+import APP.Entity.IngredienteEntity;
 import APP.Entity.ProdutoEntity;
+import APP.Enum.UNIDADEMEDIDA;
 import APP.Exceptions.EntityNotFoundException;
 import APP.Exceptions.IllegalActionException;
 import APP.Exceptions.NullargumentsException;
-import APP.Repository.EstoqueRepository;
-import APP.Repository.ProdutoRepository;
+import APP.Repositoty.IngredienteRepository;
+import APP.Repositoty.ProdutoRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -24,224 +25,103 @@ import java.util.Locale;
 public class ProdutoService {
 
     private final ProdutoRepository produtoRepository;
-
-    private final EstoqueRepository estoqueRepository;
-
-    public ProdutoService(ProdutoRepository produtoRepository, EstoqueRepository estoqueRepository) {
-        this.produtoRepository = produtoRepository;
-        this.estoqueRepository = estoqueRepository;
-    }
+    private final IngredienteRepository ingredienteRepository;
     Locale localBrasil = new Locale("pt", "BR");
+    public ProdutoService(ProdutoRepository produtoRepository, IngredienteRepository ingredienteRepository) {
+        this.produtoRepository = produtoRepository;
+        this.ingredienteRepository = ingredienteRepository;
+    }
 
-    public ResponseEntity<List<ProdutoDTO>> ListarProdutos()
+    public ResponseEntity<List<ProdutoResponseDTO>> ListarProdutos()
     {
         try
         {
-            List<ProdutoDTO> response = new ArrayList<>();
-            List<ProdutoEntity> list = produtoRepository.findAll();
-            for(ProdutoEntity produto : list)
+            List<ProdutoResponseDTO> response = new ArrayList<>();
+            List<ProdutoEntity> entities = produtoRepository.findAll();
+            for(ProdutoEntity entity : entities)
             {
-                ProdutoDTO dto = new ProdutoDTO(produto.getId(),
-                        produto.getNome(),
-                        produto.getDescricao(),
-                        produto.getCodigo(),
-                        produto.getEstoque().getCodigo(),
-                        produto.getEstoque().getQuantidade().intValue(),
-                        NumberFormat.getCurrencyInstance(localBrasil).format(produto.getValor()),
-                        produto.getNotificacao(),
-                        produto.getDataEntrada());
+                ProdutoResponseDTO dto = new ProdutoResponseDTO(entity.getId(),
+                        entity.getNome(),
+                        entity.getCodigo(),
+                        entity.getQuantidade(),
+                        entity.getUnidademedida(),
+                        NumberFormat.getCurrencyInstance(localBrasil).format(entity.getValorPorcao()),
+                        entity.getTimeStamp());
                 response.add(dto);
             }
-            return new ResponseEntity<> (response, HttpStatus.OK);
+            return new ResponseEntity<>(response,HttpStatus.OK);
         }
         catch (Exception e)
         {
             e.getMessage();
         }
-        return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<>(HttpStatus.BAD_GATEWAY);
     }
 
-    public ResponseEntity<List<EstoqueDTO>> ListarEstoque()
+    public ResponseEntity<ProdutoDTO> BuscarProdutoPorId(Long idProduto)
     {
         try
         {
-            List<EstoqueDTO> response = new ArrayList<>();
-            List<ProdutoEntity> list = produtoRepository.findAll();
-            for(ProdutoEntity produto : list)
+            if(idProduto != null)
             {
-                EstoqueDTO dto = new EstoqueDTO(
-                        produto.getEstoque().getId(),
-                        produto.getEstoque().getNome(),
-                        produto.getEstoque().getDescricao(),
-                        produto.getEstoque().getCodigo(),
-                        produto.getEstoque().getQuantidade().intValue(),
-                        NumberFormat.getCurrencyInstance(localBrasil).format(produto.getValor()));
-                response.add(dto);
-            }
-            return new ResponseEntity<> (response, HttpStatus.OK);
-        }
-        catch (Exception e)
-        {
-            e.getMessage();
-        }
-        return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-    }
-
-    public ResponseEntity<ProdutoDTO> BuscarProdutoPorId(Long id)
-    {
-        try
-        {
-            if(id != null)
-            {
-                ProdutoEntity produto = produtoRepository.findById(id).orElseThrow(
-                        ()->new EntityNotFoundException()
+                ProdutoEntity entity = produtoRepository.findById(idProduto).orElseThrow(
+                        ()-> new EntityNotFoundException()
                 );
-                ProdutoDTO response = new ProdutoDTO(produto.getId(),
-                        produto.getNome(),
-                        produto.getDescricao(),
-                        produto.getCodigo(),
-                        produto.getEstoque().getCodigo(),
-                        produto.getEstoque().getQuantidade().intValue(),
-                        NumberFormat.getCurrencyInstance(localBrasil).format(produto.getValor()),
-                        produto.getNotificacao(),
-                        produto.getDataEntrada()
-                );
-                return new ResponseEntity<>(response,HttpStatus.OK);
-            }
-        }
-        catch (Exception e)
-        {
-            e.getMessage();
-        }
-        return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-    }
-
-    public ResponseEntity<EstoqueDTO> BuscarEstoquePorId(Long id)
-    {
-        try
-        {
-            if(id != null)
-            {
-                EstoqueEntity estoque = estoqueRepository.findById(id).orElseThrow(
-                        ()->new EntityNotFoundException()
-                );
-                EstoqueDTO response = new EstoqueDTO(
-                        estoque.getId(),
-                        estoque.getNome(),
-                        estoque.getDescricao(),
-                        estoque.getCodigo(),
-                        estoque.getQuantidade().intValue(),
-                        NumberFormat.getCurrencyInstance(localBrasil).format(estoque.getValor())
-                );
-                return new ResponseEntity<>(response,HttpStatus.OK);
-            }
-        }
-        catch (Exception e)
-        {
-            e.getMessage();
-        }
-        return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-    }
-
-    public ResponseEntity<EstoqueResponseDTO> NovoProduto(String nome,
-                                                          String descricao,
-                                                          Double valorCompra,
-                                                          Double estoque,
-                                                          Double porcentagemLucro)
-    {
-        try
-        {
-            if(valorCompra < 0){throw new IllegalActionException("Valor Invalido");}
-            if(estoque < 0){throw new IllegalActionException("Valor Invalido");}
-            if(porcentagemLucro < 0){throw new IllegalActionException("Valor Invalido");}
-            if(nome != null &&
-               descricao != null &&
-               valorCompra != null &&
-               estoque != null &&
-               porcentagemLucro != null)
-            {
-               Double porcentagem = porcentagemLucro/100;
-               Double valorTotal = (valorCompra * porcentagem)+ valorCompra;
-               Double valorUnitario = valorTotal/estoque;
-               int codProduto = (int) (1111 + Math.random() * 9999);
-               int codEstoque1 = (int) (1111 + Math.random() * 9999);
-               int codEstoque2 = (int) (11111 + Math.random() * 99991);
-               ProdutoEntity produto = new ProdutoEntity();
-               produto.setNome(nome);
-               produto.setDescricao(descricao);
-               produto.setCodigo("p_"+codProduto);
-               produto.setTimeStamp(LocalDateTime.now());
-               produto.setDataEntrada(LocalDateTime.now());
-               produto.setValor(valorUnitario);
-               EstoqueEntity entity = new EstoqueEntity();
-               entity.setNome(produto.getNome());
-               entity.setDescricao(produto.getDescricao());
-               entity.setCodigo(codEstoque1+"_"+codEstoque2);
-               entity.setQuantidade(estoque);
-               entity.setValor(produto.getValor());
-               entity.setTimeStamp(LocalDateTime.now());
-               estoqueRepository.save(entity);
-               produto.setEstoque(entity);
-               produtoRepository.save(produto);
-               EstoqueResponseDTO response = new EstoqueResponseDTO(entity.getNome(),
-                       entity.getDescricao(),
-                       entity.getCodigo(),
-                       entity.getQuantidade(),
-                       NumberFormat.getCurrencyInstance(localBrasil).format(entity.getValor()));
-               return new ResponseEntity<>(response, HttpStatus.CREATED);
+                ProdutoDTO response = new ProdutoDTO(entity.getNome(),
+                        entity.getQuantidade()+""+entity.getUnidademedida(),
+                        NumberFormat.getCurrencyInstance(localBrasil).format(entity.getValorPorcao()));
+                return new ResponseEntity<>(response, HttpStatus.CREATED);
             }
             else
-            {throw new NullargumentsException();}
+            {throw  new NullargumentsException();}
         }
         catch (Exception e)
         {
             e.getMessage();
         }
-        return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<>(HttpStatus.BAD_GATEWAY);
     }
 
-    public ResponseEntity<EstoqueResponseDTO> EditarProduto(Long id,
-                                                            String nome,
-                                                            String descricao,
-                                                            Double valorCompra,
-                                                            Double estoque,
-                                                            Double porcentagemLucro)
+    public ResponseEntity<ProdutoDTO> novoProduto(String nome,
+                                                  Double quantidade,
+                                                  Double unidade,
+                                                  UNIDADEMEDIDA unidademedida,
+                                                  Double valorCompra)
     {
         try
         {
-            if(valorCompra < 0){throw new IllegalActionException("Valor Invalido");}
-            if(estoque < 0){throw new IllegalActionException("Valor Invalido");}
-            if(porcentagemLucro < 0){throw new IllegalActionException("Valor Invalido");}
+            if(quantidade < 0){throw new IllegalActionException("valor invalido");}
+            if(unidade < 0){throw new IllegalActionException("valor invalido");}
+            if(valorCompra < 0){throw new IllegalActionException("valor invalido");}
             if(nome != null &&
-                    descricao != null &&
-                    valorCompra != null &&
-                    estoque != null &&
-                    porcentagemLucro != null)
+            quantidade != null &&
+            unidade != null &&
+            unidademedida != null &&
+            valorCompra != null)
             {
-                Double porcentagem = porcentagemLucro/100;
-                Double valorTotal = (valorCompra * porcentagem)+ valorCompra;
-                Double valorUnitario = valorTotal/estoque;
-                ProdutoEntity produto = produtoRepository.findById(id).orElseThrow(
-                        ()-> new EntityNotFoundException()
-                );
-                produto.setNome(nome);
-                produto.setDescricao(descricao);
-                produto.setTimeStamp(LocalDateTime.now());
-                produto.setValor(valorUnitario);
-                EstoqueEntity entity = estoqueRepository.findById(produto.getEstoque().getId()).orElseThrow(
-                        ()-> new EntityNotFoundException()
-                );
-                entity.setNome(produto.getNome());
-                entity.setDescricao(produto.getDescricao());
-                entity.setValor(produto.getValor());
+                int cod1 = (int) (111 + Math.random() * 999);
+                ProdutoEntity entity = new ProdutoEntity();
+                entity.setNome(nome);
+                entity.setQuantidade(quantidade * unidade);
+                entity.setCodigo("pd_"+cod1);
+                Double valorUnidade = 0.0;
+                if(unidademedida == UNIDADEMEDIDA.UNIDADE)
+                {
+                    valorUnidade = valorCompra/ entity.getQuantidade();
+                }
+                if(unidademedida != UNIDADEMEDIDA.UNIDADE)
+                {
+                    valorUnidade = entity.getQuantidade() * 1000;
+                    valorUnidade = valorCompra/ valorUnidade;
+                }
+                System.out.println(valorUnidade);
+                entity.setValorPorcao(valorUnidade);
                 entity.setTimeStamp(LocalDateTime.now());
-                estoqueRepository.save(entity);
-                produtoRepository.save(produto);
-                EstoqueResponseDTO response = new EstoqueResponseDTO(entity.getNome(),
-                                                                    entity.getDescricao(),
-                                                                    entity.getCodigo(),
-                                                                    entity.getQuantidade(),
-                                                                    NumberFormat.getCurrencyInstance(localBrasil).format(entity.getValor()));
+                entity.setUnidademedida(unidademedida);
+                produtoRepository.save(entity);
+                ProdutoDTO response = new ProdutoDTO(entity.getNome(),
+                                                     entity.getQuantidade()+""+unidademedida,
+                                                      NumberFormat.getCurrencyInstance(localBrasil).format(entity.getValorPorcao()));
                 return new ResponseEntity<>(response, HttpStatus.CREATED);
             }
             else
@@ -251,188 +131,64 @@ public class ProdutoService {
         {
             e.getMessage();
         }
-        return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<>(HttpStatus.BAD_GATEWAY);
     }
 
-    public ResponseEntity<EstoqueResponseDTO> AdicionarEstoque(Long id,
-                                                       Double valorCompra,
-                                                       Double estoque,
-                                                       Double porcentagemLucro)
+    public ResponseEntity<ProdutoDTO> EditarProduto(Long idProduto,
+                                                    String nome,
+                                                    Double quantidade,
+                                                    Double unidade,
+                                                    UNIDADEMEDIDA unidademedida,
+                                                    Double valorCompra)
     {
         try
         {
-            if(valorCompra < 0){throw new IllegalActionException("Valor Invalido");}
-            if(estoque < 0){throw new IllegalActionException("Valor Invalido");}
-            if(porcentagemLucro < 0){throw new IllegalActionException("Valor Invalido");}
-            if(id != null && valorCompra != null &&
-               estoque != null &&
-               porcentagemLucro != null)
+            if(quantidade < 0){throw new IllegalActionException("valor invalido");}
+            if(unidade < 0){throw new IllegalActionException("valor invalido");}
+            if(valorCompra < 0){throw new IllegalActionException("valor invalido");}
+            if(nome != null &&
+                    quantidade != null &&
+                    unidade != null &&
+                    unidademedida != null &&
+                    valorCompra != null &&
+            idProduto != null)
             {
-                Double porcentagem = porcentagemLucro / 100;
-                Double valorTotal = (valorCompra * porcentagem) + valorCompra;
-                Double valorUnitario = valorTotal / estoque;
-                ProdutoEntity produto = produtoRepository.findById(id).orElseThrow(
+                int cod1 = (int) (111 + Math.random() * 999);
+                ProdutoEntity entity = produtoRepository.findById(idProduto).orElseThrow(
                         ()-> new EntityNotFoundException()
                 );
-                EstoqueEntity entity = estoqueRepository.findById(produto.getEstoque().getId()).orElseThrow(
-                        ()-> new EntityNotFoundException()
-                );
-                if(valorUnitario > produto.getValor())
+                entity.setNome(nome);
+                entity.setQuantidade(quantidade * unidade);
+                entity.setCodigo("pd_"+cod1);
+                Double valorUnidade = 0.0;
+                if(unidademedida == UNIDADEMEDIDA.UNIDADE)
                 {
-                    produto.setValor(valorUnitario);
-                    entity.setValor(produto.getValor());
-                    entity.setQuantidade(entity.getQuantidade()+estoque);
+                    valorUnidade = valorCompra/ entity.getQuantidade();
                 }
-                entity.setQuantidade(entity.getQuantidade()+estoque);
-                produto.setTimeStamp(LocalDateTime.now());
-                entity.setTimeStamp(LocalDateTime.now());
-                estoqueRepository.save(entity);
-                produtoRepository.save(produto);
-                EstoqueResponseDTO response = new EstoqueResponseDTO(entity.getNome(),
-                        entity.getDescricao(),
-                        entity.getCodigo(),
-                        entity.getQuantidade(),
-                        NumberFormat.getCurrencyInstance(localBrasil).format(entity.getValor()));
-                return new ResponseEntity<>(response, HttpStatus.OK);
-            }
-        }
-        catch (Exception e)
-        {
-            e.getMessage();
-        }
-        return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-    }
-
-    public ResponseEntity<EstoqueResponseDTO> NovoValorProduto(Long id,
-                                                               Double novoValor)
-    {
-        try
-        {
-            if(novoValor < 0){throw new IllegalActionException("valor Invalido");}
-            if(id != null &&
-               novoValor != null)
-            {
-                ProdutoEntity produto = produtoRepository.findById(id).orElseThrow(
-                        ()-> new EntityNotFoundException()
-                );
-                EstoqueEntity entity = estoqueRepository.findById(produto.getEstoque().getId()).orElseThrow(
-                        ()-> new EntityNotFoundException()
-                );
-                produto.setValor(novoValor);
-                entity.setValor(produto.getValor());
-                produto.setTimeStamp(LocalDateTime.now());
-                entity.setTimeStamp(LocalDateTime.now());
-                estoqueRepository.save(entity);
-                produtoRepository.save(produto);
-                EstoqueResponseDTO response = new EstoqueResponseDTO(entity.getNome(),
-                                                                    entity.getDescricao(),
-                                                                    entity.getCodigo(),
-                                                                    entity.getQuantidade(),
-                                                                    NumberFormat.getCurrencyInstance(localBrasil).format(entity.getValor()));
-                return new ResponseEntity<>(response, HttpStatus.OK);
-            }
-        }
-        catch (Exception e)
-        {
-            e.getMessage();
-        }
-        return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-    }
-
-    public ResponseEntity<EstoqueResponseDTO> reajusteValorProduto(Long id,
-                                                                   Double porcentagemReajuste)
-    {
-        try
-        {
-            if(porcentagemReajuste < 0){throw new IllegalActionException("valor Invalido");}
-            if(id != null && porcentagemReajuste != null)
-            {
-                Double porcentagem =  porcentagemReajuste/ 100;
-                ProdutoEntity produto = produtoRepository.findById(id).orElseThrow(
-                        ()-> new EntityNotFoundException()
-                );
-                EstoqueEntity entity = estoqueRepository.findById(produto.getEstoque().getId()).orElseThrow(
-                        ()-> new EntityNotFoundException()
-                );
-                Double valorUnitario = (produto.getValor() * porcentagem) + produto.getValor();
-                produto.setValor(valorUnitario);
-                produto.setTimeStamp(LocalDateTime.now());
-                entity.setValor(produto.getValor());
-                entity.setTimeStamp(LocalDateTime.now());
-                estoqueRepository.save(entity);
-                produtoRepository.save(produto);
-                EstoqueResponseDTO response = new EstoqueResponseDTO(entity.getNome(),
-                        entity.getDescricao(),
-                        entity.getCodigo(),
-                        entity.getQuantidade(),
-                        NumberFormat.getCurrencyInstance(localBrasil).format(entity.getValor()));
-                return new ResponseEntity<>(response, HttpStatus.OK);
-            }
-        }
-        catch (Exception e)
-        {
-            e.getMessage();
-        }
-        return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-    }
-
-    public ResponseEntity<EstoqueResponseDTO> DescontoValorProduto(Long id,
-                                                                   Double porcentagemDesconto)
-    {
-        try
-        {
-            if(porcentagemDesconto < 0){throw new IllegalActionException("valor Invalido");}
-            if(id != null && porcentagemDesconto != null)
-            {
-                Double porcentagem =  porcentagemDesconto/ 100;
-                ProdutoEntity produto = produtoRepository.findById(id).orElseThrow(
-                        ()-> new EntityNotFoundException()
-                );
-                EstoqueEntity entity = estoqueRepository.findById(produto.getEstoque().getId()).orElseThrow(
-                        ()-> new EntityNotFoundException()
-                );
-                Double valorUnitario = (produto.getValor() * porcentagem) - produto.getValor();
-                produto.setValor(valorUnitario);
-                produto.setTimeStamp(LocalDateTime.now());
-                entity.setValor(produto.getValor());
-                entity.setTimeStamp(LocalDateTime.now());
-                estoqueRepository.save(entity);
-                produtoRepository.save(produto);
-                EstoqueResponseDTO response = new EstoqueResponseDTO(entity.getNome(),
-                        entity.getDescricao(),
-                        entity.getCodigo(),
-                        entity.getQuantidade(),
-                        NumberFormat.getCurrencyInstance(localBrasil).format(entity.getValor()));
-                return new ResponseEntity<>(response, HttpStatus.OK);
-            }
-        }
-        catch (Exception e)
-        {
-            e.getMessage();
-        }
-        return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-    }
-
-    public void deletarProduto(Long id)
-    {
-        try
-        {
-
-            if(id != null)
-            {
-                ProdutoEntity entity = produtoRepository.findById(id).orElseThrow(
-                        ()-> new EntityNotFoundException()
-                );
-                if(entity.getEstoque() != null)
+                if(unidademedida != UNIDADEMEDIDA.UNIDADE)
                 {
-                    estoqueRepository.deleteById(entity.getEstoque().getId());
-                    produtoRepository.deleteById(entity.getId());
+                    valorUnidade = entity.getQuantidade() * 1000;
+                    valorUnidade = valorCompra/ valorUnidade;
                 }
+                System.out.println(valorUnidade);
+                entity.setValorPorcao(valorUnidade);
+                entity.setTimeStamp(LocalDateTime.now());
+                entity.setUnidademedida(unidademedida);
+                produtoRepository.save(entity);
+                ProdutoDTO response = new ProdutoDTO(entity.getNome(),
+                        entity.getQuantidade()+""+unidademedida,
+                        NumberFormat.getCurrencyInstance(localBrasil).format(entity.getValorPorcao()));
+                return new ResponseEntity<>(response, HttpStatus.CREATED);
             }
+            else
+            {throw new NullargumentsException();}
         }
         catch (Exception e)
         {
             e.getMessage();
         }
+        return new ResponseEntity<>(HttpStatus.BAD_GATEWAY);
     }
+
+
 }

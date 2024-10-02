@@ -1,5 +1,6 @@
 package APP.Entity;
 
+import APP.Enum.UNIDADEMEDIDA;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -9,35 +10,28 @@ import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
 
-@Entity
 @Data
-@Builder
+@Entity
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "Produto")
+@Builder
 public class ProdutoEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     private String nome;
 
-    private String descricao;
-
-    @JoinColumn(unique = true)
     private String codigo;
 
-    private Double valor;
+    private Double quantidade;  //quantidade -- unidades 4kg de mussarela 2
 
-    private String notificacao;
+    @Enumerated(EnumType.STRING)
+    private UNIDADEMEDIDA unidademedida;
 
-    @JsonFormat(pattern = "dd/MM/yyyy HH:mm")
-    private LocalDateTime dataEntrada;
-
-    @OneToOne
-    @JoinColumn(name = "estoqueEntity_id", referencedColumnName = "id")
-    private EstoqueEntity estoque;
+    //valor por grama ou ml
+    private Double valorPorcao;
 
     @JsonFormat(pattern = "dd/MM/yyyy HH:mm")
     private LocalDateTime timeStamp;

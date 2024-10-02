@@ -1,0 +1,125 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: postgre
+spec:
+  selector:
+    matchLabels:
+      app: postgre
+  template:
+    metadata:
+      labels:
+        app: postgre
+    spec:
+      containers:
+        - name: postgre
+          image: postgres
+          ports:
+          - containerPort: 5432
+          env:
+          - name: POSTGRES_DB
+            value: "db_aplhaminicommerce"
+          - name: POSTGRES_USER
+            value: "admin"
+          - name: POSTGRES_PASSWORD
+            value: "mh8q23pr99"  
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: postgre
+spec:
+  selector: 
+    app: postgre
+  ports:
+    - port: 5432
+  type: ClusterIP
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend
+spec:
+  selector:
+    matchLabels:
+      app: backend
+  template:
+    metadata:
+      labels:
+        app: backend
+    spec:
+      containers:
+        - name: backend
+          image: mquinteiro464/mhqaecommercenotabackend:v7
+          ports:
+          - containerPort: 8080
+          env:
+          - name: SPRING_DATASOURCE_URL
+            value: "jdbc:postgresql://postgre:5432/db_aplhaminicommerce"
+          - name: SPRING_DATASOURCE_USERNAME
+            value: "admin"
+          - name: SPRING_DATASOURCE_PASSWORD
+            value: "mh8q23pr99"  
+          - name: SPRING_JPA_HIBERNATE_DDL_AUTO
+            value: "update"
+          - name: SPRING_DATASOURCE_DATABASE
+            value: "db_aplhaminicommerce"  
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: backend-svc
+spec:
+  selector: 
+    app: backend
+  ports:
+    - port: 8080
+      targetPort: 8080
+  type: LoadBalancer
+
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend
+spec:
+  selector:
+    matchLabels:
+      app: frontend
+  template:
+    metadata:   
+      labels:
+        app: frontend
+    spec:
+      containers:
+        - name: frontend
+          image: mquinteiro464/mhqaecommercenotafrontend:v7
+          ports:
+          - containerPort: 3000
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: frontend-svc
+spec:
+  selector: 
+    app: frontend
+  ports:
+    - port: 3000
+      targetPort: 3000
+  type: LoadBalancer
+
+
+---  
+
+

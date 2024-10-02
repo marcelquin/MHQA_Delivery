@@ -4,34 +4,115 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="34025fcb-3987-4d1e-b838-3e2798afbca3" name="Changes" comment="" />
+    <list default="true" id="62bf5af0-6b4f-4aad-a03b-661c18c0ff2c" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../Cliente/Dockerfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/APP/DTO/BoletosRequestDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/APP/DTO/CardapioResponseDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/APP/DTO/IngredienteResponseDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/APP/DTO/ItemCardapioResponseDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/APP/DTO/ItemLogisticaDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/APP/DTO/ItemVendaRequestDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/APP/DTO/LogisticaDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/APP/DTO/LogisticaRequestDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/APP/DTO/PagamentoResponseDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/APP/DTO/ProdutoResponseDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/APP/DTO/RelatorioAnualDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/APP/DTO/RelatorioDiarioDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/APP/DTO/RelatorioMensalDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/APP/DTO/VendaRequestFinalziadaDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/APP/Enum/FORMAPAGAMENTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/APP/Enum/STATUSENTREGA.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/APP/Service/LogisticaService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/APP/ServiceMs/FinanceiroMsService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/APP/ServiceMs/LogisticaMsService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/APP/ServiceMs/PagamentoMsService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Financeiro/src/main/java/App/Controller/relatoriosController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Financeiro/src/main/java/App/Dto/PagamentoResponseDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Financeiro/src/main/java/App/Dto/RelatorioAnualDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Financeiro/src/main/java/App/Dto/RelatorioDiarioDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Financeiro/src/main/java/App/Dto/RelatorioMensalDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Financeiro/src/main/java/App/Dto/Request/BoletosRequestDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Financeiro/src/main/java/App/Dto/Request/ItemVendaRequestDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Financeiro/src/main/java/App/Dto/Request/VendaRequestFinalziadaDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Financeiro/src/main/java/App/Dto/Response/BoletosResponseDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Financeiro/src/main/java/App/Dto/Response/ItemVendaResponseDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Financeiro/src/main/java/App/Dto/Response/VendaResponseFinalizadaDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Financeiro/src/main/java/App/Entity/BoletoEntity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Financeiro/src/main/java/App/Entity/DebitosEntity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Financeiro/src/main/java/App/Entity/ItemVendaEntity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Financeiro/src/main/java/App/Entity/RelatorioMensalEntity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Financeiro/src/main/java/App/Entity/VendasEntity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Financeiro/src/main/java/App/Entity/VendasRealizdasEntity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Financeiro/src/main/java/App/Enum/FORMAPAGAMENTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Financeiro/src/main/java/App/Enum/StatusPagamento.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Financeiro/src/main/java/App/Exceptions/EntityNotFoundException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Financeiro/src/main/java/App/Exceptions/IllegalActionException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Financeiro/src/main/java/App/Exceptions/InvalidStatusException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Financeiro/src/main/java/App/Exceptions/InvalidValueException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Financeiro/src/main/java/App/Exceptions/NullargumentsException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Financeiro/src/main/java/App/Repositry/BoletoRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Financeiro/src/main/java/App/Repositry/DebitosRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Financeiro/src/main/java/App/Repositry/ItemVendaEntityRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Financeiro/src/main/java/App/Repositry/RelatorioMensalRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Financeiro/src/main/java/App/Repositry/VendasRealizadaRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Financeiro/src/main/java/App/Repositry/VendasRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Financeiro/src/main/java/App/Service/PagamentoService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Financeiro/src/main/java/App/Service/RelatorioMensalService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Logistica/src/main/java/APP/Controller/LogisticaController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Logistica/src/main/java/APP/DTO/ItemLogisticaDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Logistica/src/main/java/APP/DTO/LogisticaDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Logistica/src/main/java/APP/DTO/LogisticaRequestDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Logistica/src/main/java/APP/Entity/ItemLogisticaEntity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Logistica/src/main/java/APP/Entity/LogisticaEntity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Logistica/src/main/java/APP/Enum/STATUSENTREGA.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Logistica/src/main/java/APP/Exceptions/EntityNotFoundException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Logistica/src/main/java/APP/Exceptions/IllegalActionException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Logistica/src/main/java/APP/Exceptions/InvalidValueException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Logistica/src/main/java/APP/Exceptions/NullargumentsException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Logistica/src/main/java/APP/Repository/ItemLogisticaRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Logistica/src/main/java/APP/Repository/LogisticaRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Logistica/src/main/java/APP/Service/LogisticaService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Pagamento/Dockerfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Pagamento/src/main/java/App/Controller/PagamentoController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Pagamento/src/main/java/App/Dto/PagamentoResponseDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Pagamento/src/main/java/App/Entity/PagamentoEntity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Pagamento/src/main/java/App/Enum/FORMAPAGAMENTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Pagamento/src/main/java/App/Enum/StatusPagamento.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Pagamento/src/main/java/App/Exceptions/EntityNotFoundException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Pagamento/src/main/java/App/Exceptions/IllegalActionException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Pagamento/src/main/java/App/Exceptions/InvalidStatusException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Pagamento/src/main/java/App/Exceptions/InvalidValueException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Pagamento/src/main/java/App/Exceptions/NullargumentsException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Pagamento/src/main/java/App/Repository/PagamentoRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Pagamento/src/main/java/App/Service/PagamentoService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Produtos/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Produtos/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Produtos/src/main/java/APP/Controller/ProdutoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Produtos/src/main/java/APP/Controller/ProdutoController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Produtos/src/main/java/APP/DTO/EstoqueDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Produtos/src/main/java/APP/DTO/EstoqueResponseDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Produtos/src/main/java/APP/DTO/ProdutoDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Produtos/src/main/java/APP/DTO/ProdutoDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Produtos/src/main/java/APP/DTO/ProdutoResponseDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Produtos/src/main/java/APP/DTO/ProdutoResponseDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Produtos/src/main/java/APP/Entity/EstoqueEntity.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Produtos/src/main/java/APP/Entity/ProdutoEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Produtos/src/main/java/APP/Entity/ProdutoEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Produtos/src/main/java/APP/MsProdutosApplication.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Produtos/src/main/java/APP/Repository/EstoqueRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Produtos/src/main/java/APP/Repository/ProdutoRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Produtos/src/main/java/APP/Service/ProdutoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Produtos/src/main/java/APP/Service/ProdutoService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Produtos/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../Produtos/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Produtos/src/test/java/APP/MsProdutosApplicationTests.java" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExternalProjectsData">
-    <projectState path="$PROJECT_DIR$">
-      <ProjectState />
-    </projectState>
-  </component>
-  <component name="ExternalProjectsManager">
-    <system id="GRADLE">
-      <state>
-        <projects_view>
-          <tree_state>
-            <expand />
-            <select />
-          </tree_state>
-        </projects_view>
-      </state>
-    </system>
-  </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
+        <option value="Enum" />
+        <option value="Record" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -49,39 +130,44 @@
       </MavenGeneralSettings>
     </option>
   </component>
-  <component name="ProjectId" id="2lyHFZ7aZho72XBvFrxs2plrOA0" />
-  <component name="ProjectLevelVcsManager">
-    <ConfirmationsSetting value="2" id="Add" />
-  </component>
+  <component name="ProjectId" id="2mLdrSyYDGZpYVoaGJSkNnbosmc" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "last_opened_file_path": "D:/SPRING BOOT/PROJETOS/FULLSTACK/MHQA_Delivery/Backend/Produtos",
-    "settings.editor.selected.configurable": "reference.settingsdialog.project.gradle"
+    "ignore.virus.scanning.warn.message": "true",
+    "last_opened_file_path": "D:/SPRING BOOT/PROJETOS/FULLSTACK/MHQA_Delivery/Backend/Delivery/src/main/java/APP/Enum"
   }
 }]]></component>
   <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="APP.Entity" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\SPRING BOOT\PROJETOS\FULLSTACK\MHQA_Delivery\Backend\DELIVERY\src\main\java\App" />
+      <recent name="D:\SPRING BOOT\PROJETOS\FULLSTACK\MHQA_Delivery\Backend\Delivery\src\main\java\APP\Enum" />
+      <recent name="D:\SPRING BOOT\PROJETOS\FULLSTACK\MHQA_Delivery\Backend\Delivery\src\main\java\APP\Dto" />
+      <recent name="D:\SPRING BOOT\PROJETOS\FULLSTACK\MHQA_Delivery\Backend\Vendas\src\main\java\APP\Dto" />
+      <recent name="D:\SPRING BOOT\PROJETOS\FULLSTACK\MHQA_Delivery\Backend\Vendas\src\main\java\APP" />
+      <recent name="D:\SPRING BOOT\PROJETOS\FULLSTACK\MHQA_Delivery\Backend\Vendas\src\main\java\APP\Entity" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="App.Repository" />
-      <recent name="App.Entity" />
+      <recent name="APP.ServiceMs" />
+      <recent name="APP.Dto" />
+      <recent name="APP.Enum" />
+      <recent name="APP.Repository" />
+      <recent name="APP.Entity" />
     </key>
   </component>
   <component name="RunManager">
-    <configuration name="MsProdutosDeliveryApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="App.MsProdutosDeliveryApplication" />
+    <configuration name="MhqaDeliverySistemApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="APP.MhqaDeliverySistemApplication" />
       <module name="MHQA" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="App.*" />
+          <option name="PATTERN" value="APP.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -91,22 +177,19 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.MsProdutosDeliveryApplication" />
+        <item itemvalue="Application.MhqaDeliverySistemApplication" />
       </list>
     </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="34025fcb-3987-4d1e-b838-3e2798afbca3" name="Changes" comment="" />
-      <created>1726145305029</created>
+      <changelist id="62bf5af0-6b4f-4aad-a03b-661c18c0ff2c" name="Changes" comment="" />
+      <created>1726859999356</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1726145305029</updated>
+      <updated>1726859999356</updated>
     </task>
     <servers />
-  </component>
-  <component name="VcsManagerConfiguration">
-    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
 </project>

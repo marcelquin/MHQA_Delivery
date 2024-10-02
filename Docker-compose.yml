@@ -1,0 +1,142 @@
+version: "3"
+services:
+
+
+  database_microservices:
+    image: 'mysql:8'
+    environment:
+      - 'MYSQL_DATABASE=db_microServico'
+      - 'MYSQL_PASSWORD=a22kju99z'
+      - 'MYSQL_ROOT_PASSWORD=a22kju99z'
+      - 'MYSQL_USER=mhqa_quinteiro'
+    volumes:
+      - /app/database/db_microServicos
+    ports:
+      - 3306:3306
+    
+    
+   database_financeiro:
+    image: 'postgres:17.0-bullseye'
+    environment:
+      - 'POSTGRES_DATABASE=db_financeiro'
+      - 'POSTGRES_PASSWORD=mh8q23pr99'
+      - 'POSTGRES_USER=mhqa'
+    volumes:
+      - /app/database/db_financeiro
+    ports:
+      - 5432:5432
+    
+   database_delivery:
+    image: 'postgres:17.0-bullseye'
+    environment:
+      - 'POSTGRES_DATABASE=db_Delivery'
+      - 'POSTGRES_PASSWORD=mh8q14hf9'
+      - 'POSTGRES_USER=mhqa'
+    volumes:
+      - /app/database/db_Delivery
+     ports:
+      - 5433:5433
+    
+      
+  ms_cliente:
+    build: /Backend/Cliente
+    ports:
+      - 8081:8081
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:mysql://database_microservices:3306/db_microServico
+      - SPRING_DATASOURCE_USERNAME=mhqa_quinteiro
+      - SPRING_DATASOURCE_PASSWORD=a22kju99z
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+      - spring.datasource.driver-class-name=com.mysql.jdbc.Driver
+      - spring.jpa.database-platform=org.hibernate.dialect.MySQL8Dialect
+      - spring.datasource.url=jdbc:mysql://localhost:3306/db_microServico
+    depends_on:
+      - database_microservices
+    restart: on-failure
+
+  ms_produtos:
+    build: /Backend/Produtos
+    ports:
+      - 8082:8082
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:mysql://database_microservices:3306/db_microServico
+      - SPRING_DATASOURCE_USERNAME=mhqa_quinteiro
+      - SPRING_DATASOURCE_PASSWORD=a22kju99z
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+      - spring.datasource.driver-class-name=com.mysql.jdbc.Driver
+      - spring.jpa.database-platform=org.hibernate.dialect.MySQL8Dialect
+      - spring.datasource.url=jdbc:mysql://localhost:3306/db_microServico
+    depends_on:
+      - database_microservices
+    restart: on-failure
+
+  ms_logistica:
+    build: /Backend/Logistica
+    ports:
+      - 8083:8083
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:mysql://database_microservices:3306/db_microServico
+      - SPRING_DATASOURCE_USERNAME=mhqa_quinteiro
+      - SPRING_DATASOURCE_PASSWORD=a22kju99z
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+      - spring.datasource.driver-class-name=com.mysql.jdbc.Driver
+      - spring.jpa.database-platform=org.hibernate.dialect.MySQL8Dialect
+      - spring.datasource.url=jdbc:mysql://localhost:3306/db_microServico
+    depends_on:
+      - database_microservices
+    restart: on-failure
+    
+
+  ms_pagamento:
+    build: /Backend/Pagamento
+    ports:
+      - 8084:8084
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:database_financeiro://database:5432/db_financeiro
+      - SPRING_DATASOURCE_USERNAME=mhqa
+      - SPRING_DATASOURCE_PASSWORD=mh8q23pr99
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+    depends_on:
+      - database_financeiro
+    restart: on-failure
+   
+  ms_financeiro:
+    build: /Backend/Financeiro
+    ports:
+      - 8085:8085
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:database_financeiro://database:5432/db_financeiro
+      - SPRING_DATASOURCE_USERNAME=mhqa
+      - SPRING_DATASOURCE_PASSWORD=mh8q23pr99
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+    depends_on:
+      - database_financeiro
+      - ms_pagamento
+    restart: on-failure   
+    
+  ms_delivery:
+    build: /Backend/Delivery
+    ports:
+      - 8080:8080
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:database_delivery://database:5433/db_Delivery
+      - SPRING_DATASOURCE_USERNAME=mhqa
+      - SPRING_DATASOURCE_PASSWORD=mh8q14hf9
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+    depends_on:
+      - database_delivery
+      - ms_financeiro
+      - ms_logistica
+      - ms_logistica
+      - ms_produtos
+      - ms_cliente
+    restart: on-failure
+    
+  #frontend:
+  #  build: /frontend
+  #  ports:
+  #    - 3000:3000
+  #  depends_on:
+  #    - backend
+  #  restart: on-failure
+  
