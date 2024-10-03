@@ -83,7 +83,7 @@ public class LogisticaService {
             e.getMessage();
         }
     }
-    @PutMapping("/FinalizarEntrega")
+
     public void FinalizarEntrega(Long id)
     {
         try

@@ -5,101 +5,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="62bf5af0-6b4f-4aad-a03b-661c18c0ff2c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../Cliente/Dockerfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/APP/DTO/BoletosRequestDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/APP/DTO/CardapioResponseDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/APP/DTO/IngredienteResponseDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/APP/DTO/ItemCardapioResponseDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/APP/DTO/ItemLogisticaDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/APP/DTO/ItemVendaRequestDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/APP/DTO/LogisticaDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/APP/DTO/LogisticaRequestDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/APP/DTO/PagamentoResponseDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/APP/DTO/ProdutoResponseDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/APP/DTO/RelatorioAnualDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/APP/DTO/RelatorioDiarioDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/APP/DTO/RelatorioMensalDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/APP/DTO/VendaRequestFinalziadaDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/APP/Enum/FORMAPAGAMENTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/APP/Enum/STATUSENTREGA.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/APP/Service/LogisticaService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/APP/ServiceMs/FinanceiroMsService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/APP/ServiceMs/LogisticaMsService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/APP/ServiceMs/PagamentoMsService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Financeiro/src/main/java/App/Controller/relatoriosController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Financeiro/src/main/java/App/Dto/PagamentoResponseDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Financeiro/src/main/java/App/Dto/RelatorioAnualDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Financeiro/src/main/java/App/Dto/RelatorioDiarioDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Financeiro/src/main/java/App/Dto/RelatorioMensalDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Financeiro/src/main/java/App/Dto/Request/BoletosRequestDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Financeiro/src/main/java/App/Dto/Request/ItemVendaRequestDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Financeiro/src/main/java/App/Dto/Request/VendaRequestFinalziadaDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Financeiro/src/main/java/App/Dto/Response/BoletosResponseDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Financeiro/src/main/java/App/Dto/Response/ItemVendaResponseDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Financeiro/src/main/java/App/Dto/Response/VendaResponseFinalizadaDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Financeiro/src/main/java/App/Entity/BoletoEntity.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Financeiro/src/main/java/App/Entity/DebitosEntity.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Financeiro/src/main/java/App/Entity/ItemVendaEntity.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Financeiro/src/main/java/App/Entity/RelatorioMensalEntity.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Financeiro/src/main/java/App/Entity/VendasEntity.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Financeiro/src/main/java/App/Entity/VendasRealizdasEntity.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Financeiro/src/main/java/App/Enum/FORMAPAGAMENTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Financeiro/src/main/java/App/Enum/StatusPagamento.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Financeiro/src/main/java/App/Exceptions/EntityNotFoundException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Financeiro/src/main/java/App/Exceptions/IllegalActionException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Financeiro/src/main/java/App/Exceptions/InvalidStatusException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Financeiro/src/main/java/App/Exceptions/InvalidValueException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Financeiro/src/main/java/App/Exceptions/NullargumentsException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Financeiro/src/main/java/App/Repositry/BoletoRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Financeiro/src/main/java/App/Repositry/DebitosRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Financeiro/src/main/java/App/Repositry/ItemVendaEntityRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Financeiro/src/main/java/App/Repositry/RelatorioMensalRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Financeiro/src/main/java/App/Repositry/VendasRealizadaRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Financeiro/src/main/java/App/Repositry/VendasRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Financeiro/src/main/java/App/Service/PagamentoService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Financeiro/src/main/java/App/Service/RelatorioMensalService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Logistica/src/main/java/APP/Controller/LogisticaController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Logistica/src/main/java/APP/DTO/ItemLogisticaDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Logistica/src/main/java/APP/DTO/LogisticaDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Logistica/src/main/java/APP/DTO/LogisticaRequestDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Logistica/src/main/java/APP/Entity/ItemLogisticaEntity.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Logistica/src/main/java/APP/Entity/LogisticaEntity.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Logistica/src/main/java/APP/Enum/STATUSENTREGA.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Logistica/src/main/java/APP/Exceptions/EntityNotFoundException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Logistica/src/main/java/APP/Exceptions/IllegalActionException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Logistica/src/main/java/APP/Exceptions/InvalidValueException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Logistica/src/main/java/APP/Exceptions/NullargumentsException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Logistica/src/main/java/APP/Repository/ItemLogisticaRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Logistica/src/main/java/APP/Repository/LogisticaRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Logistica/src/main/java/APP/Service/LogisticaService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Pagamento/Dockerfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Pagamento/src/main/java/App/Controller/PagamentoController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Pagamento/src/main/java/App/Dto/PagamentoResponseDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Pagamento/src/main/java/App/Entity/PagamentoEntity.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Pagamento/src/main/java/App/Enum/FORMAPAGAMENTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Pagamento/src/main/java/App/Enum/StatusPagamento.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Pagamento/src/main/java/App/Exceptions/EntityNotFoundException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Pagamento/src/main/java/App/Exceptions/IllegalActionException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Pagamento/src/main/java/App/Exceptions/InvalidStatusException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Pagamento/src/main/java/App/Exceptions/InvalidValueException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Pagamento/src/main/java/App/Exceptions/NullargumentsException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Pagamento/src/main/java/App/Repository/PagamentoRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Pagamento/src/main/java/App/Service/PagamentoService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/APP/Controller/LogisticaController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/APP/Controller/ProdutoController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/APP/Service/ProdutoService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/APP/ServiceMs/ProdutoMsService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Financeiro/Dockerfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Logistica/Dockerfile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Produtos/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Produtos/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Produtos/src/main/java/APP/Controller/ProdutoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Produtos/src/main/java/APP/Controller/ProdutoController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Produtos/src/main/java/APP/DTO/EstoqueDTO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Produtos/src/main/java/APP/DTO/EstoqueResponseDTO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Produtos/src/main/java/APP/DTO/ProdutoDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Produtos/src/main/java/APP/DTO/ProdutoDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Produtos/src/main/java/APP/DTO/ProdutoResponseDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Produtos/src/main/java/APP/DTO/ProdutoResponseDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Produtos/src/main/java/APP/Entity/EstoqueEntity.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Produtos/src/main/java/APP/Entity/ProdutoEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Produtos/src/main/java/APP/Entity/ProdutoEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Produtos/src/main/java/APP/MsProdutosApplication.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Produtos/src/main/java/APP/Repository/EstoqueRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Produtos/src/main/java/APP/Repository/ProdutoRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Produtos/src/main/java/APP/Service/ProdutoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Produtos/src/main/java/APP/Service/ProdutoService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/APP/Controller/VendaController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/APP/Controller/VendaController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/APP/Service/LogisticaService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/APP/Service/LogisticaService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Financeiro/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../Financeiro/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Logistica/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../Logistica/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Pagamento/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/../Pagamento/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Pagamento/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../Pagamento/src/main/resources/application.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Produtos/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../Produtos/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Produtos/src/test/java/APP/MsProdutosApplicationTests.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../../Docker-compose.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

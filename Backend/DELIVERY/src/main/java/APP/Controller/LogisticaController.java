@@ -1,10 +1,7 @@
 package APP.Controller;
 
-import APP.Dto.VendaDTO;
-import APP.Dto.VendaResponseDTO;
-import APP.Entity.VendaEntity;
-import APP.Enum.FORMAPAGAMENTO;
-import APP.Service.VendaService;
+import APP.Dto.LogisticaDTO;
+import APP.ServiceMs.LogisticaMsService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
@@ -15,18 +12,28 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/Vendas")
-@Tag(name = "MHQA delivery",
-        description = "Manipula as informações relacionadas a vendas"
+@RequestMapping("Logistica")
+@Tag(name = "Logistica",
+        description = "Manipula dados referentes a entidade enviando ao micro serviço responsavel e retornando as informações"
 )
-public class VendaController {
+public class LogisticaController {
 
-    private final VendaService service;
+    private final LogisticaMsService service;
 
-    public VendaController(VendaService service) {
+    public LogisticaController(LogisticaMsService service) {
         this.service = service;
     }
 
+    @Operation(summary = "Lista Registros da tabela", method = "GET")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Operação realizada com sucesso"),
+            @ApiResponse(responseCode = "422", description = "Dados de requisição inválida"),
+            @ApiResponse(responseCode = "400", description = "Parametros inválidos"),
+            @ApiResponse(responseCode = "500", description = "Ops algoo deu errado"),
+    })
+    @GetMapping("/ListarEntregas")
+    public ResponseEntity<List<LogisticaDTO>> ListarEntregas()
+    {return service.ListarEntregas();}
 
     @Operation(summary = "Lista Registros da tabela", method = "GET")
     @ApiResponses(value = {
@@ -35,20 +42,9 @@ public class VendaController {
             @ApiResponse(responseCode = "400", description = "Parametros inválidos"),
             @ApiResponse(responseCode = "500", description = "Ops algoo deu errado"),
     })
-    @GetMapping("/ListarVendas")
-    public ResponseEntity<List<VendaResponseDTO>> ListarVendas()
-    { return service.ListarVendas();}
-
-    @Operation(summary = "Lista Registros da tabela", method = "GET")
-    @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "Operação realizada com sucesso"),
-            @ApiResponse(responseCode = "422", description = "Dados de requisição inválida"),
-            @ApiResponse(responseCode = "400", description = "Parametros inválidos"),
-            @ApiResponse(responseCode = "500", description = "Ops algoo deu errado"),
-    })
-    @GetMapping("/ListarVendasEmAberto")
-    public ResponseEntity<List<VendaResponseDTO>> ListarVendasEmAberto()
-    {return service.ListarVendasEmAberto();}
+    @GetMapping("/ListarEntregasEmAberto")
+    public ResponseEntity<List<LogisticaDTO>> ListarEntregasEmAberto()
+    {return service.ListarEntregasEmAberto();}
 
     @Operation(summary = "Busca Registro da tabela", method = "GET")
     @ApiResponses(value = {
@@ -57,52 +53,58 @@ public class VendaController {
             @ApiResponse(responseCode = "400", description = "Parametros inválidos"),
             @ApiResponse(responseCode = "500", description = "Ops algoo deu errado"),
     })
-    @GetMapping("/BuscarVendaPorId")
-    public ResponseEntity<VendaDTO> BuscarVendaPorId(@RequestParam Long id)
-    {return service.BuscarVendaPorId(id);}
+    @GetMapping("/BuscarEntregaPorId")
+    public ResponseEntity<LogisticaDTO> BuscarEntregaPorId(@RequestParam Long id)
+    {return service.BuscarEntregaPorId(id);}
 
-    @Operation(summary = "Salva Registro na tabela", method = "POST")
+
+    @Operation(summary = "Edita Registro da tabela", method = "PUT")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Operação realizada com sucesso"),
             @ApiResponse(responseCode = "422", description = "Dados de requisição inválida"),
             @ApiResponse(responseCode = "400", description = "Parametros inválidos"),
             @ApiResponse(responseCode = "500", description = "Ops algoo deu errado"),
     })
-    @PostMapping("/NovaVenda")
-    public ResponseEntity<VendaDTO> NovaVenda(Long idCliente,
-                                              String nomeCliente)
-    { return service.NovaVenda(idCliente, nomeCliente);}
+    @PutMapping("/IniciarEntrega")
+    public void IniciarEntrega(@RequestParam Long id)
+    {service.IniciarEntrega(id);}
 
-    @Operation(summary = "Edita Registro na tabela", method = "PUT")
+    @Operation(summary = "Edita Registro da tabela", method = "PUT")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Operação realizada com sucesso"),
             @ApiResponse(responseCode = "422", description = "Dados de requisição inválida"),
             @ApiResponse(responseCode = "400", description = "Parametros inválidos"),
             @ApiResponse(responseCode = "500", description = "Ops algoo deu errado"),
     })
-    @PutMapping("/AdicionarItemVenda")
-    public ResponseEntity<VendaDTO> AdicionarItemVenda(@RequestParam Long idVenda,
-                                                       @RequestParam Long idProduto,
-                                                       @RequestParam Double quantidade)
-    {return service.AdicionarItemVenda(idVenda, idProduto, quantidade);}
+    @PutMapping("/FinalizarEntrega")
+    public void FinalizarEntrega(Long id)
+    {service.FinalizarEntrega(id);}
 
-
-    @Operation(summary = "Edita Registro na tabela", method = "PUT")
+    @Operation(summary = "Edita Registro da tabela", method = "PUT")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Operação realizada com sucesso"),
             @ApiResponse(responseCode = "422", description = "Dados de requisição inválida"),
             @ApiResponse(responseCode = "400", description = "Parametros inválidos"),
             @ApiResponse(responseCode = "500", description = "Ops algoo deu errado"),
     })
-    @PutMapping("/FinalizarVenda")
-    public ResponseEntity<VendaDTO> FinalizarVenda(@RequestParam Long idVenda,
-                                                   @RequestParam FORMAPAGAMENTO formapagamento,
-                                                   @RequestParam Double parcelas,
-                                                   @RequestParam Double desconto,
-                                                   @RequestParam Double valorPago,
-                                                   @RequestParam String telefone,
-                                                   @RequestParam Boolean entrega,
-                                                   String enderecoEntrega)
-    {return service.FinalizarVenda(idVenda,formapagamento,parcelas,desconto,valorPago,entrega,telefone,enderecoEntrega);}
+    @PutMapping("/CancelarEntrega")
+    public void CancelarEntrega(@RequestParam Long id,
+                                @RequestParam String motivo)
+    {service.CancelarEntrega(id, motivo);}
+
+    @Operation(summary = "Edita Registro da tabela", method = "PUT")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Operação realizada com sucesso"),
+            @ApiResponse(responseCode = "422", description = "Dados de requisição inválida"),
+            @ApiResponse(responseCode = "400", description = "Parametros inválidos"),
+            @ApiResponse(responseCode = "500", description = "Ops algoo deu errado"),
+    })
+    @PutMapping("/ReiniciarEntrega")
+    public void ReiniciarEntrega(@RequestParam Long id,
+                                 @RequestParam String motivo)
+    {service.ReiniciarEntrega(id, motivo);}
+
+
+
 
 }
