@@ -57,10 +57,10 @@
 		</dependency>
 
 		<!--DB -->
-		  <dependency>
+		 <dependency>
 			<groupId>org.postgresql</groupId>
 			<artifactId>postgresql</artifactId>
-		  </dependency>
+		</dependency>
 		<!--SWAGGER-->
 		<dependency>
 			<groupId>io.springfox</groupId>

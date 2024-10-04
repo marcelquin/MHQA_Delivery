@@ -5,22 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="62bf5af0-6b4f-4aad-a03b-661c18c0ff2c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/APP/Controller/LogisticaController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/APP/Controller/ProdutoController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/APP/Service/ProdutoService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/APP/ServiceMs/ProdutoMsService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Financeiro/Dockerfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Logistica/Dockerfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/APP/Controller/VendaController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/APP/Controller/VendaController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/APP/Service/LogisticaService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/APP/Service/LogisticaService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Financeiro/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../Financeiro/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Logistica/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../Logistica/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Pagamento/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/../Pagamento/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Pagamento/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../Pagamento/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Produtos/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../Produtos/src/main/resources/application.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../Docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../../Docker-compose.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -61,7 +49,7 @@
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "D:/SPRING BOOT/PROJETOS/FULLSTACK/MHQA_Delivery/Backend/Delivery/src/main/java/APP/Enum"
+    "last_opened_file_path": "D:/SPRING BOOT/PROJETOS/FULLSTACK/MHQA_Delivery/Backend/Delivery"
   }
 }]]></component>
   <component name="RecentsManager">
@@ -69,11 +57,11 @@
       <recent name="APP.Entity" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\SPRING BOOT\PROJETOS\FULLSTACK\MHQA_Delivery\Backend\Delivery" />
       <recent name="D:\SPRING BOOT\PROJETOS\FULLSTACK\MHQA_Delivery\Backend\Delivery\src\main\java\APP\Enum" />
       <recent name="D:\SPRING BOOT\PROJETOS\FULLSTACK\MHQA_Delivery\Backend\Delivery\src\main\java\APP\Dto" />
       <recent name="D:\SPRING BOOT\PROJETOS\FULLSTACK\MHQA_Delivery\Backend\Vendas\src\main\java\APP\Dto" />
       <recent name="D:\SPRING BOOT\PROJETOS\FULLSTACK\MHQA_Delivery\Backend\Vendas\src\main\java\APP" />
-      <recent name="D:\SPRING BOOT\PROJETOS\FULLSTACK\MHQA_Delivery\Backend\Vendas\src\main\java\APP\Entity" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="APP.ServiceMs" />
