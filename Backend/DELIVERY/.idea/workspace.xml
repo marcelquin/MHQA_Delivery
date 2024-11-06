@@ -4,13 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="62bf5af0-6b4f-4aad-a03b-661c18c0ff2c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../../Docker-compose.yml" afterDir="false" />
-    </list>
+    <list default="true" id="62bf5af0-6b4f-4aad-a03b-661c18c0ff2c" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -49,7 +43,7 @@
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "D:/SPRING BOOT/PROJETOS/FULLSTACK/MHQA_Delivery/Backend/Delivery"
+    "last_opened_file_path": "D:/SPRING BOOT/PROJETOS/Micro Serviços/Docker ok/Colaborador ver"
   }
 }]]></component>
   <component name="RecentsManager">
